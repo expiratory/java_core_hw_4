@@ -65,7 +65,7 @@ public class Order {
 
             for (String message : exceptionMessages) {
                 finalExceptionString.append(message).append(" ").append(
-                        customerFullName).append(" ").append(orderItemTitle).append("\n");
+                        customerFullName).append(" ").append(orderItemTitle).append(" ");
             }
 
             throw new BaseMarketplaceException(finalExceptionString.toString());

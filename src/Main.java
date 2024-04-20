@@ -63,6 +63,8 @@ public class Main {
 
         int i = 0;
 
+        StringBuilder finalExceptionMessage = new StringBuilder();
+
         for (Object[] orderParams : orderData) {
             try {
                 orders[i] = Order.createOrder(
@@ -78,8 +80,12 @@ public class Main {
                 );
                 i++;
             } catch (BaseMarketplaceException e) {
-                System.out.println(e.getMessage());
+                finalExceptionMessage.append(e.getMessage()).append(" ");
             }
+        }
+
+        if (!finalExceptionMessage.toString().isEmpty()) {
+            throw new BaseMarketplaceException(finalExceptionMessage.toString());
         }
 
         int actualSize = 0;
